@@ -3,127 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINOTIMER Official | Energy Control Solutions</title>
+    <title>SINOTIMER - Global Language Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 基础设置 */
-        body { margin: 0; font-family: 'Arial', sans-serif; background-color: #f4f4f4; }
-        
-        /* 1. 顶部红色导航栏 */
-        .navbar {
-            background-color: #ce1212; /* 品牌红 */
-            color: white;
-            padding: 10px 20px;
+        :root {
+            --sinotimer-red: #E3120B;
+            --industrial-black: #1a1a1a;
+            --bg-gray: #f5f5f5;
+        }
+
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; }
+
+        /* --- 1. 顶部语言切换条 --- */
+        .language-top-bar {
+            background: var(--bg-gray);
+            border-bottom: 1px solid #ddd;
+            padding: 10px 5%;
+        }
+        .lang-list {
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .lang-item {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-        }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
-        .nav-links a {
-            color: white;
             text-decoration: none;
-            margin-left: 20px;
-            font-size: 14px;
-        }
-        .search-bar { padding: 5px; border-radius: 4px; border: none; }
-
-        /* 2. 轮播图容器 */
-        .slider-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .mySlides { display: none; }
-        .mySlides img {
-            width: 100%;
-            height: 450px; /* 固定高度，看起来更整齐 */
-            object-fit: cover; /* 自动裁剪图片适配比例 */
-            display: block;
-        }
-
-        /* 3. 左右按钮 */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            background: rgba(0,0,0,0.3);
-            border: none;
+            color: #666;
+            font-size: 11px;
             transition: 0.3s;
         }
-        .next { right: 0; border-radius: 3px 0 0 3px; }
-        .prev { left: 0; border-radius: 0 3px 3px 0; }
-        .prev:hover, .next:hover { background: rgba(206,18,18,0.8); }
-
-        /* 产品标题文字覆盖 */
-        .text-caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 10px 20px;
-            font-size: 20px;
-            border-left: 5px solid #ce1212;
+        .lang-item:hover { color: var(--sinotimer-red); }
+        .flag-icon {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 4px;
+            border: 1px solid #ddd;
         }
+
+        /* --- 2. Logo 居中区域 --- */
+        header { padding: 20px 5%; text-align: center; background: #fff; }
+        .logo-center h1 { font-size: 42px; font-weight: 800; color: var(--sinotimer-red); margin: 0; letter-spacing: -1px; }
+        .logo-center p { margin: 5px 0 0; color: #333; font-weight: 600; }
+
+        /* --- 3. 导航栏 --- */
+        nav {
+            background: var(--industrial-black);
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .main-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .menu-item { position: relative; }
+        .menu-item > a {
+            display: block;
+            padding: 15px 18px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .menu-item:hover > a { background: var(--sinotimer-red); }
+        .dropdown {
+            position: absolute; top: 100%; left: 0;
+            background: #fff; min-width: 220px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none; list-style: none; padding: 10px 0;
+            border-top: 3px solid var(--sinotimer-red);
+        }
+        .menu-item:hover .dropdown { display: block; }
+        .dropdown li a { padding: 10px 20px; display: block; color: #333; text-decoration: none; font-size: 13px; }
+        .dropdown li a:hover { background: #f5f5f5; color: var(--sinotimer-red); }
+
+        /* --- 4. 滚动图片区域 --- */
+        .slider-container {
+            width: 100%; max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .mySlides { display: none; }
+        .mySlides img { width: 100%; height: auto; display: block; }
+        
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            padding: 16px; color: white; font-weight: bold; font-size: 20px;
+            background: rgba(0,0,0,0.3); border: none; transition: 0.3s;
+        }
+        .next { right: 0; }
+        .prev { left: 0; }
+        .prev:hover, .next:hover { background: var(--sinotimer-red); }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">SINOTIMER</div>
-        <div class="nav-links">
-            <input type="text" class="search-bar" placeholder="Search models...">
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-
-    <div class="slider-container">
-        <div class="mySlides">
-            <img src="p1.jpg">
-            <div class="text-caption">Digital Timer Switch Series</div>
-        </div>
-        
-        <div class="mySlides">
-            <img src="p2.jpg">
-            <div class="text-caption">Smart Energy Metering Solutions</div>
-        </div>
-
-        <button class="prev" onclick="plusSlides(-1)">❮</button>
-        <button class="next" onclick="plusSlides(1)">❯</button>
+<div class="language-top-bar">
+    <div class="lang-list">
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon"><span>English</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"><span>Deutsch</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon"><span>Español</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"><span>Français</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"><span>Italiano</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon"><span>Русский</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"><span>日本語</span></a>
+        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon"><span>中文</span></a>
     </div>
+</div>
 
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
+<header>
+    <div class="logo-center">
+        <h1>SINOTIMER<sup>®</sup></h1>
+        <p>SinoTimer Technology Co., Ltd.</p>
+    </div>
+</header>
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
+<nav>
+    <ul class="main-menu">
+        <li class="menu-item"><a href="#">Home</a></li>
+        <li class="menu-item">
+            <a href="#">Products <i class="fas fa-caret-down"></i></a>
+            <ul class="dropdown">
+                <li><a href="#">WIFI Meters</a></li>
+                <li><a href="#">Voltage Protectors</a></li>
+                <li><a href="#">Energy Meters</a></li>
+                <li><a href="#">Time Controllers</a></li>
+            </ul>
+        </li>
+        <li class="menu-item"><a href="#">Company Profile</a></li>
+        <li class="menu-item"><a href="#">Contacts</a></li>
+    </ul>
+</nav>
 
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slides[slideIndex-1].style.display = "block";  
-        }
+<div class="slider-container">
+    <div class="mySlides"><img src="p1.jpg"></div>
+    <div class="mySlides"><img src="p2.jpg"></div>
+    <button class="prev" onclick="plusSlides(-1)">❮</button>
+    <button class="next" onclick="plusSlides(1)">❯</button>
+</div>
 
-        // 自动每4秒滚动一次
-        setInterval(() => plusSlides(1), 4000);
-    </script>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        slides[slideIndex-1].style.display = "block";  
+    }
+    setInterval(() => plusSlides(1), 4000); // 4秒自动切换
+</script>
 
 </body>
 </html>
+
 
