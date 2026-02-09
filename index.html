@@ -2,48 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SINOTIMER Official</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINOTIMER Official | Energy Control Solutions</title>
     <style>
-        /* 轮播图样式 */
-        .slider-box {
-            max-width: 800px;
+        /* 基础设置 */
+        body { margin: 0; font-family: 'Arial', sans-serif; background-color: #f4f4f4; }
+        
+        /* 1. 顶部红色导航栏 */
+        .navbar {
+            background-color: #ce1212; /* 品牌红 */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .search-bar { padding: 5px; border-radius: 4px; border: none; }
+
+        /* 2. 轮播图容器 */
+        .slider-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
             position: relative;
-            margin: auto;
-            overflow: hidden;
-            border: 3px solid #ce1212; /* 品牌红 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .mySlides { display: none; }
-        img { width: 100%; height: auto; vertical-align: middle; }
-        
-        /* 左右按钮 */
+        .mySlides img {
+            width: 100%;
+            height: 450px; /* 固定高度，看起来更整齐 */
+            object-fit: cover; /* 自动裁剪图片适配比例 */
+            display: block;
+        }
+
+        /* 3. 左右按钮 */
         .prev, .next {
             cursor: pointer;
             position: absolute;
             top: 50%;
+            transform: translateY(-50%);
             padding: 16px;
             color: white;
             font-weight: bold;
-            font-size: 18px;
-            background: rgba(0,0,0,0.5);
+            font-size: 24px;
+            background: rgba(0,0,0,0.3);
             border: none;
-            transform: translateY(-50%);
+            transition: 0.3s;
         }
-        .next { right: 0; }
-        .prev { left: 0; }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev { left: 0; border-radius: 0 3px 3px 0; }
+        .prev:hover, .next:hover { background: rgba(206,18,18,0.8); }
+
+        /* 产品标题文字覆盖 */
+        .text-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-left: 5px solid #ce1212;
+        }
     </style>
 </head>
-<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: Arial;">
+<body>
 
-    <h1>Welcome to SINOTIMER</h1>
-    
-    <div class="slider-box">
+    <nav class="navbar">
+        <div class="logo">SINOTIMER</div>
+        <div class="nav-links">
+            <input type="text" class="search-bar" placeholder="Search models...">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <div class="slider-container">
         <div class="mySlides">
             <img src="p1.jpg">
-        </div>
-        <div class="mySlides">
-            <img src="p2.jpg">
+            <div class="text-caption">Digital Timer Switch Series</div>
         </div>
         
+        <div class="mySlides">
+            <img src="p2.jpg">
+            <div class="text-caption">Smart Energy Metering Solutions</div>
+        </div>
+
         <button class="prev" onclick="plusSlides(-1)">❮</button>
         <button class="next" onclick="plusSlides(1)">❯</button>
     </div>
@@ -66,8 +119,11 @@
             }
             slides[slideIndex-1].style.display = "block";  
         }
-        // 自动播放
-        setInterval(() => plusSlides(1), 3000);
+
+        // 自动每4秒滚动一次
+        setInterval(() => plusSlides(1), 4000);
     </script>
+
 </body>
 </html>
+
