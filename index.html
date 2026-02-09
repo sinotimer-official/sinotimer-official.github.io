@@ -3,126 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINOTIMER - Global Language Support</title>
+    <title>SINOTIMER - Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --sinotimer-red: #E3120B;
             --industrial-black: #1a1a1a;
             --bg-gray: #f8f8f8;
-            --site-width: 1440px; /* 调整为更宽的标准，画面更饱满 */
+            --site-width: 1440px; 
         }
 
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; }
 
-        /* 核心内容容器 */
-        .container {
-            max-width: var(--site-width);
-            margin: 0 auto;
-            width: 95%;
-        }
+        .container { max-width: var(--site-width); margin: 0 auto; width: 95%; }
 
         /* --- 1. 顶部语言栏 --- */
-        .language-top-bar {
-            background: var(--bg-gray);
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-        }
-        .lang-list {
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+        .language-top-bar { background: var(--bg-gray); border-bottom: 1px solid #eee; padding: 10px 0; }
+        .lang-list { display: flex; justify-content: flex-end; gap: 25px; list-style: none; margin: 0; padding: 0; }
         .lang-item {
-            text-decoration: none;
-            color: #666;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            text-decoration: none; color: #666; font-size: 13px;
+            display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer;
         }
         .lang-item:hover { color: var(--sinotimer-red); }
-        .flag-icon { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
+        .flag-icon { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
 
         /* --- 2. Logo 区域 --- */
         header { padding: 40px 0; text-align: center; }
         .logo-center h1 { font-size: 52px; color: var(--sinotimer-red); margin: 0; font-weight: 800; letter-spacing: -1px; }
         .logo-center p { color: #333; margin: 8px 0 0; font-size: 18px; font-weight: 600; }
 
-        /* --- 3. 导航栏 (精准菜单版) --- */
-        nav {
-            background: var(--industrial-black);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .main-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            justify-content: center;
-        }
+        /* --- 3. 导航栏 --- */
+        nav { background: var(--industrial-black); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .main-menu { display: flex; list-style: none; margin: 0; padding: 0; justify-content: center; }
         .menu-item { position: relative; }
         .menu-item > a {
-            display: block;
-            padding: 20px 22px; /* 增加间距 */
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: 0.3s;
+            display: block; padding: 20px 22px; color: #fff; text-decoration: none;
+            font-size: 14px; text-transform: uppercase; font-weight: 600; transition: 0.3s;
         }
         .menu-item:hover > a { background: var(--sinotimer-red); }
         
-        /* 下拉菜单 */
         .dropdown {
-            position: absolute; top: 100%; left: 0;
-            background: #fff; min-width: 280px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            display: none; list-style: none; padding: 12px 0;
+            position: absolute; top: 100%; left: 0; background: #fff; min-width: 280px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; list-style: none; padding: 12px 0;
             border-top: 4px solid var(--sinotimer-red);
         }
         .menu-item:hover .dropdown { display: block; }
-        .dropdown li a { 
-            padding: 12px 25px; 
-            display: block; 
-            color: #333; 
-            text-decoration: none; 
-            font-size: 14px; 
-            border-bottom: 1px solid #f2f2f2; 
-        }
-        .dropdown li:last-child a { border-bottom: none; }
-        .dropdown li a:hover { background: #f9f9f9; color: var(--sinotimer-red); padding-left: 30px; transition: 0.2s; }
+        .dropdown li a { padding: 12px 25px; display: block; color: #333; text-decoration: none; font-size: 13px; border-bottom: 1px solid #f2f2f2; }
+        .dropdown li a:hover { background: #f9f9f9; color: var(--sinotimer-red); padding-left: 30px; }
 
-        /* --- 4. 轮播图区域 (大气版) --- */
+        /* --- 4. 轮播图 --- */
         .slider-section { padding: 0; margin-top: 0; }
         .slider-container {
-            max-width: var(--site-width);
-            margin: 25px auto;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px; /* 现代圆角 */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: var(--site-width); margin: 25px auto; position: relative;
+            overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .mySlides { display: none; }
         .mySlides img { width: 100%; height: auto; display: block; }
-        
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
-            padding: 20px; color: white; background: rgba(0,0,0,0.2); border: none;
-            font-size: 30px; transition: 0.3s;
+            padding: 20px; color: white; background: rgba(0,0,0,0.2); border: none; font-size: 30px;
         }
-        .next { right: 0; border-radius: 8px 0 0 8px; }
-        .prev { left: 0; border-radius: 0 8px 8px 0; }
-        .prev:hover, .next:hover { background: var(--sinotimer-red); }
-
+        .next { right: 0; } .prev { left: 0; }
     </style>
 </head>
 <body>
@@ -130,14 +72,10 @@
 <div class="language-top-bar">
     <div class="container">
         <div class="lang-list">
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">English</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/de.png" class="flag-icon">Deutsch</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon">Español</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon">Français</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/it.png" class="flag-icon">Italiano</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon">Русский</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon">日本語</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon">中文</a>
+            <a onclick="changeLang('EU')" class="lang-item"><img src="https://flagcdn.com/w40/eu.png" class="flag-icon">EU</a>
+            <a onclick="changeLang('US')" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">US</a>
+            <a onclick="changeLang('UK')" class="lang-item"><img src="https://flagcdn.com/w40/GB.png" class="flag-icon">UK</a>
+            <a onclick="changeLang('BR')" class="lang-item"><img src="https://flagcdn.com/w40/br.png" class="flag-icon">BR</a>
         </div>
     </div>
 </div>
@@ -146,7 +84,7 @@
     <div class="container">
         <div class="logo-center">
             <h1>SINOTIMER<sup>®</sup></h1>
-            <p>SinoTimer Technology Co., Ltd.</p>
+            <p data-lang="slogan">SinoTimer Technology Co., Ltd.</p>
         </div>
     </div>
 </header>
@@ -154,36 +92,33 @@
 <nav>
     <div class="container">
         <ul class="main-menu">
-            <li class="menu-item"><a href="#">Home</a></li>
-            
+            <li class="menu-item"><a href="#" data-lang="home">Home</a></li>
             <li class="menu-item">
-                <a href="#">Products <i class="fas fa-caret-down"></i></a>
+                <a href="#"><span data-lang="products">Products</span> <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown">
-                    <li><a href="#" style="font-weight:bold; color:var(--sinotimer-red);">See all categories</a></li>
-                    <li><a href="#">WIFI Meters & Protectors</a></li>
-                    <li><a href="#">Voltage and Current Protectors</a></li>
-                    <li><a href="#">Energy Meters</a></li>
-                    <li><a href="#">Measuring Meters</a></li>
-                    <li><a href="#">Time Controllers</a></li>
-                    <li><a href="#">Controling Instruments</a></li>
-                    <li><a href="#">Modular Contactors</a></li>
-                    <li><a href="#">PV Components</a></li>
-                    <li><a href="#">Accessories and Auxiliaries</a></li>
+                    <li><a href="#" style="font-weight:bold; color:var(--sinotimer-red);" data-lang="p0">See all categories</a></li>
+                    <li><a href="#" data-lang="p1">WIFI Meters & Protectors</a></li>
+                    <li><a href="#" data-lang="p2">Voltage and Current Protectors</a></li>
+                    <li><a href="#" data-lang="p3">Energy Meters</a></li>
+                    <li><a href="#" data-lang="p4">Measuring Meters</a></li>
+                    <li><a href="#" data-lang="p5">Time Controllers</a></li>
+                    <li><a href="#" data-lang="p6">Controling Instruments</a></li>
+                    <li><a href="#" data-lang="p7">Modular Contactors</a></li>
+                    <li><a href="#" data-lang="p8">PV Components</a></li>
+                    <li><a href="#" data-lang="p9">Accessories and Auxiliaries</a></li>
                 </ul>
             </li>
-
             <li class="menu-item">
-                <a href="#">Company profile <i class="fas fa-caret-down"></i></a>
+                <a href="#"><span data-lang="company">Company profile</span> <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown">
-                    <li><a href="#">Company Overview</a></li>
-                    <li><a href="#">Ratings & Reviews</a></li>
+                    <li><a href="#" data-lang="c1">Company Overview</a></li>
+                    <li><a href="#" data-lang="c2">Ratings & Reviews</a></li>
                 </ul>
             </li>
-
-            <li class="menu-item"><a href="#">Contacts</a></li>
-            <li class="menu-item"><a href="#">Promotion</a></li>
-            <li class="menu-item"><a href="#">Custom Page 1</a></li>
-            <li class="menu-item"><a href="#">Custom Page 2</a></li>
+            <li class="menu-item"><a href="#" data-lang="contacts">Contacts</a></li>
+            <li class="menu-item"><a href="#" data-lang="promotion">Promotion</a></li>
+            <li class="menu-item"><a href="#" data-lang="page1">Custom Page 1</a></li>
+            <li class="menu-item"><a href="#" data-lang="page2">Custom Page 2</a></li>
         </ul>
     </div>
 </nav>
@@ -198,12 +133,58 @@
 </div>
 
 <script>
+    // 语言字典
+    const translations = {
+        'US': {
+            'slogan': 'SinoTimer Technology Co., Ltd.', 'home': 'Home', 'products': 'Products', 'company': 'Company profile',
+            'contacts': 'Contacts', 'promotion': 'Promotion', 'page1': 'Custom Page 1', 'page2': 'Custom Page 2',
+            'p0': 'See all categories', 'p1': 'WIFI Meters & Protectors', 'p2': 'Voltage and Current Protectors',
+            'p3': 'Energy Meters', 'p4': 'Measuring Meters', 'p5': 'Time Controllers', 'p6': 'Controling Instruments',
+            'p7': 'Modular Contactors', 'p8': 'PV Components', 'p9': 'Accessories and Auxiliaries',
+            'c1': 'Company Overview', 'c2': 'Ratings & Reviews'
+        },
+        'EU': { // 以德语/通用欧洲感为例
+            'slogan': 'SinoTimer Technologie GmbH', 'home': 'Startseite', 'products': 'Produkte', 'company': 'Unternehmensprofil',
+            'contacts': 'Kontakt', 'promotion': 'Aktion', 'page1': 'Eigene Seite 1', 'page2': 'Eigene Seite 2',
+            'p0': 'Alle Kategorien', 'p1': 'WIFI Zähler & Schutz', 'p2': 'Spannungs- und Stromschutz',
+            'p3': 'Energiezähler', 'p4': 'Messgeräte', 'p5': 'Zeitschaltuhren', 'p6': 'Steuerinstrumente',
+            'p7': 'Modulare Schütze', 'p8': 'PV-Komponenten', 'p9': 'Zubehör',
+            'c1': 'Unternehmensübersicht', 'c2': 'Bewertungen'
+        },
+        'UK': {
+            'slogan': 'SinoTimer Technology Ltd (UK)', 'home': 'Home', 'products': 'Products', 'company': 'Company Profile',
+            'contacts': 'Contact Us', 'promotion': 'Special Offers', 'page1': 'Custom Page 1', 'page2': 'Custom Page 2',
+            'p0': 'All Categories', 'p1': 'WIFI Meters & Protectors', 'p2': 'Voltage & Current Protectors',
+            'p3': 'Energy Meters', 'p4': 'Measuring Meters', 'p5': 'Time Controllers', 'p6': 'Controling Instruments',
+            'p7': 'Modular Contactors', 'p8': 'Solar PV Components', 'p9': 'Accessories',
+            'c1': 'About Us', 'c2': 'Customer Reviews'
+        },
+        'BR': { // 葡萄牙语
+            'slogan': 'SinoTimer Tecnologia Ltda.', 'home': 'Início', 'products': 'Produtos', 'company': 'Perfil da Empresa',
+            'contacts': 'Contatos', 'promotion': 'Promoção', 'page1': 'Página Personalizada 1', 'page2': 'Página Personalizada 2',
+            'p0': 'Ver todas as categorias', 'p1': 'Medidores WIFI e Protetores', 'p2': 'Protetores de Voltagem e Corrente',
+            'p3': 'Medidores de Energia', 'p4': 'Medidores de Medição', 'p5': 'Controladores de Tempo', 'p6': 'Instrumentos de Controle',
+            'p7': 'Contatores Modulares', 'p8': 'Componentes Fotovoltaicos', 'p9': 'Acessórios e Auxiliares',
+            'c1': 'Visão Geral', 'c2': 'Avaliações'
+        }
+    };
+
+    function changeLang(lang) {
+        const elements = document.querySelectorAll('[data-lang]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-lang');
+            if (translations[lang][key]) {
+                el.innerText = translations[lang][key];
+            }
+        });
+    }
+
+    // 轮播图逻辑保持不变
     let slideIndex = 1;
     showSlides(slideIndex);
     function plusSlides(n) { showSlides(slideIndex += n); }
     function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
+        let i; let slides = document.getElementsByClassName("mySlides");
         if (n > slides.length) {slideIndex = 1}    
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
@@ -214,4 +195,5 @@
 
 </body>
 </html>
+
 
