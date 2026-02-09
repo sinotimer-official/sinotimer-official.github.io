@@ -3,152 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINOTIMER - Global Language Support</title>
+    <title>SINOTIMER - Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --sinotimer-red: #E3120B;
             --industrial-black: #1a1a1a;
-            --bg-gray: #f5f5f5;
+            --bg-gray: #f8f8f8;
+            --site-width: 1200px; /* 标准独立站核心宽度 */
         }
 
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; }
 
-        /* --- 1. 顶部语言切换条 --- */
+        /* 通用容器：限制核心宽度并居中 */
+        .container {
+            max-width: var(--site-width);
+            margin: 0 auto;
+            width: 95%; /* 手机端两边留点缝隙 */
+        }
+
+        /* --- 1. 顶部语言栏 (背景铺满，内容居中) --- */
         .language-top-bar {
             background: var(--bg-gray);
-            border-bottom: 1px solid #ddd;
-            padding: 10px 5%;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
         }
         .lang-list {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: flex-end; /* 国旗靠右对齐，符合标准习惯 */
+            gap: 15px;
             list-style: none;
             margin: 0;
             padding: 0;
         }
         .lang-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-decoration: none;
             color: #666;
-            font-size: 11px;
-            transition: 0.3s;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        .lang-item:hover { color: var(--sinotimer-red); }
-        .flag-icon {
-            width: 22px; height: 22px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 4px;
-            border: 1px solid #ddd;
-        }
+        .flag-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
 
-        /* --- 2. Logo 居中区域 --- */
-        header { padding: 20px 5%; text-align: center; background: #fff; }
-        .logo-center h1 { font-size: 42px; font-weight: 800; color: var(--sinotimer-red); margin: 0; letter-spacing: -1px; }
-        .logo-center p { margin: 5px 0 0; color: #333; font-weight: 600; }
+        /* --- 2. Logo 区域 (居中) --- */
+        header { padding: 30px 0; text-align: center; }
+        .logo-center h1 { font-size: 45px; color: var(--sinotimer-red); margin: 0; font-weight: 800; }
+        .logo-center p { color: #333; margin: 5px 0 0; font-size: 16px; letter-spacing: 1px; }
 
-        /* --- 3. 导航栏 --- */
+        /* --- 3. 导航栏 (背景黑，菜单限制宽度) --- */
         nav {
             background: var(--industrial-black);
-            display: flex;
-            justify-content: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .main-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .main-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
         .menu-item { position: relative; }
         .menu-item > a {
             display: block;
-            padding: 15px 18px;
+            padding: 18px 20px;
             color: #fff;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
             text-transform: uppercase;
+            transition: 0.3s;
         }
         .menu-item:hover > a { background: var(--sinotimer-red); }
+        
+        /* 下拉菜单优化 */
         .dropdown {
             position: absolute; top: 100%; left: 0;
-            background: #fff; min-width: 220px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #fff; min-width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: none; list-style: none; padding: 10px 0;
             border-top: 3px solid var(--sinotimer-red);
         }
         .menu-item:hover .dropdown { display: block; }
-        .dropdown li a { padding: 10px 20px; display: block; color: #333; text-decoration: none; font-size: 13px; }
-        .dropdown li a:hover { background: #f5f5f5; color: var(--sinotimer-red); }
+        .dropdown li a { padding: 10px 20px; display: block; color: #333; text-decoration: none; font-size: 13px; border-bottom: 1px solid #f9f9f9; }
+        .dropdown li a:hover { background: #fdfdfd; color: var(--sinotimer-red); padding-left: 25px; transition: 0.2s; }
 
-        /* --- 4. 滚动图片区域 --- */
+        /* --- 4. 轮播图区域 (标准规格) --- */
+        .slider-section {
+            background: #fff;
+            padding: 20px 0; /* 图片上下留一点空白，更有高级感 */
+        }
         .slider-container {
-            width: 100%; max-width: 1200px;
-            margin: 20px auto;
+            max-width: var(--site-width);
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 4px; /* 四角微圆，符合现代审美 */
         }
         .mySlides { display: none; }
         .mySlides img { width: 100%; height: auto; display: block; }
         
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
-            padding: 16px; color: white; font-weight: bold; font-size: 20px;
-            background: rgba(0,0,0,0.3); border: none; transition: 0.3s;
+            padding: 15px; color: white; background: rgba(0,0,0,0.2); border: none;
+            font-size: 24px; transition: 0.3s;
         }
-        .next { right: 0; }
-        .prev { left: 0; }
+        .next { right: 0; border-radius: 4px 0 0 4px; }
+        .prev { left: 0; border-radius: 0 4px 4px 0; }
         .prev:hover, .next:hover { background: var(--sinotimer-red); }
+
     </style>
 </head>
 <body>
 
 <div class="language-top-bar">
-    <div class="lang-list">
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon"><span>English</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/de.png" class="flag-icon"><span>Deutsch</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon"><span>Español</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon"><span>Français</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/it.png" class="flag-icon"><span>Italiano</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon"><span>Русский</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon"><span>日本語</span></a>
-        <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon"><span>中文</span></a>
+    <div class="container">
+        <div class="lang-list">
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">EN</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon">ES</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon">RU</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon">CN</a>
+        </div>
     </div>
 </div>
 
 <header>
     <div class="logo-center">
         <h1>SINOTIMER<sup>®</sup></h1>
-        <p>SinoTimer Technology Co., Ltd.</p>
+        <p>Expert in Time and Energy Control</p>
     </div>
 </header>
 
 <nav>
-    <ul class="main-menu">
-        <li class="menu-item"><a href="#">Home</a></li>
-        <li class="menu-item">
-            <a href="#">Products <i class="fas fa-caret-down"></i></a>
-            <ul class="dropdown">
-                <li><a href="#">WIFI Meters</a></li>
-                <li><a href="#">Voltage Protectors</a></li>
-                <li><a href="#">Energy Meters</a></li>
-                <li><a href="#">Time Controllers</a></li>
-            </ul>
-        </li>
-        <li class="menu-item"><a href="#">Company Profile</a></li>
-        <li class="menu-item"><a href="#">Contacts</a></li>
-    </ul>
+    <div class="container">
+        <ul class="main-menu">
+            <li class="menu-item"><a href="#">Home</a></li>
+            <li class="menu-item">
+                <a href="#">Products <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown">
+                    <li><a href="#" style="font-weight:bold; color:var(--sinotimer-red);">See All Categories</a></li>
+                    <li><a href="#">WIFI Meters & Protectors</a></li>
+                    <li><a href="#">Voltage and Current Protectors</a></li>
+                    <li><a href="#">Energy Meters</a></li>
+                    <li><a href="#">Measuring Meters</a></li>
+                    <li><a href="#">Time Controllers</a></li>
+                    <li><a href="#">Controling Instruments</a></li>
+                    <li><a href="#">Modular Contactors</a></li>
+                    <li><a href="#">PV Components</a></li>
+                    <li><a href="#">Accessories and Auxiliaries</a></li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="#">Company profile <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown">
+                    <li><a href="#">Company Overview</a></li>
+                    <li><a href="#">Ratings & Reviews</a></li>
+                </ul>
+            </li>
+            <li class="menu-item"><a href="#">Contacts</a></li>
+            <li class="menu-item"><a href="#">Promotion</a></li>
+            <li class="menu-item"><a href="#">Custom Page 1</a></li>
+            <li class="menu-item"><a href="#">Custom Page 2</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="slider-container">
-    <div class="mySlides"><img src="p1.jpg"></div>
-    <div class="mySlides"><img src="p2.jpg"></div>
-    <button class="prev" onclick="plusSlides(-1)">❮</button>
-    <button class="next" onclick="plusSlides(1)">❯</button>
+<div class="slider-section">
+    <div class="slider-container">
+        <div class="mySlides"><img src="p1.jpg"></div>
+        <div class="mySlides"><img src="p2.jpg"></div>
+        <button class="prev" onclick="plusSlides(-1)">❮</button>
+        <button class="next" onclick="plusSlides(1)">❯</button>
+    </div>
 </div>
 
 <script>
@@ -163,10 +190,8 @@
         for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
         slides[slideIndex-1].style.display = "block";  
     }
-    setInterval(() => plusSlides(1), 4000); // 4秒自动切换
+    setInterval(() => plusSlides(1), 5000); 
 </script>
 
 </body>
 </html>
-
-
