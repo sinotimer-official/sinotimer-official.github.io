@@ -16,30 +16,26 @@
         body { margin: 0; padding: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; }
         .container { max-width: var(--site-width); margin: 0 auto; width: 95%; }
 
-        /* --- 1. 顶部语言栏 --- */
+        /* --- 1. 顶部语言栏 (仅保留 4 个国家) --- */
         .language-top-bar { background: var(--bg-gray); border-bottom: 1px solid #eee; padding: 10px 0; }
-        .lang-list { display: flex; justify-content: flex-end; gap: 15px; list-style: none; margin: 0; padding: 0; }
+        .lang-list { display: flex; justify-content: flex-end; gap: 20px; list-style: none; margin: 0; padding: 0; }
         .lang-item {
-            text-decoration: none; color: #666; font-size: 12px;
-            display: flex; align-items: center; gap: 5px; font-weight: 500; cursor: pointer;
+            text-decoration: none; color: #666; font-size: 13px;
+            display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer;
         }
         .lang-item:hover { color: var(--sinotimer-red); }
-        .flag-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .flag-icon { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
 
         /* --- 2. Logo 区域 --- */
         header { padding: 40px 0; text-align: center; }
         .logo-center h1 { font-size: 52px; color: var(--sinotimer-red); margin: 0; font-weight: 800; letter-spacing: -1px; }
-        /* 这里的文字已更新 */
-        .logo-center p { color: #333; margin: 8px 0 0; font-size: 18px; font-weight: 600; text-transform: capitalize; }
+        .logo-center p { color: #333; margin: 8px 0 0; font-size: 18px; font-weight: 600; }
 
         /* --- 3. 导航栏 --- */
         nav { background: var(--industrial-black); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .main-menu { display: flex; list-style: none; margin: 0; padding: 0; justify-content: center; }
         .menu-item { position: relative; }
-        .menu-item > a {
-            display: block; padding: 20px 22px; color: #fff; text-decoration: none;
-            font-size: 14px; text-transform: uppercase; font-weight: 600;
-        }
+        .menu-item > a { display: block; padding: 20px 22px; color: #fff; text-decoration: none; font-size: 14px; text-transform: uppercase; font-weight: 600; }
         .menu-item:hover > a { background: var(--sinotimer-red); }
         .dropdown {
             position: absolute; top: 100%; left: 0; background: #fff; min-width: 280px;
@@ -63,14 +59,10 @@
 <div class="language-top-bar">
     <div class="container">
         <div class="lang-list">
-            <div onclick="changeLang('US')" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">English</div>
-            <div onclick="changeLang('DE')" class="lang-item"><img src="https://flagcdn.com/w40/de.png" class="flag-icon">Deutsch</div>
-            <div onclick="changeLang('ES')" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon">Español</div>
-            <div onclick="changeLang('FR')" class="lang-item"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon">Français</div>
-            <div onclick="changeLang('IT')" class="lang-item"><img src="https://flagcdn.com/w40/it.png" class="flag-icon">Italiano</div>
-            <div onclick="changeLang('RU')" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon">Русский</div>
-            <div onclick="changeLang('JP')" class="lang-item"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon">日本語</div>
+            <div onclick="changeLang('EU')" class="lang-item"><img src="https://flagcdn.com/w40/eu.png" class="flag-icon">EU</div>
+            <div onclick="changeLang('US')" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">US</div>
             <div onclick="changeLang('UK')" class="lang-item"><img src="https://flagcdn.com/w40/gb.png" class="flag-icon">UK</div>
+            <div onclick="changeLang('BR')" class="lang-item"><img src="https://flagcdn.com/w40/br.png" class="flag-icon">BR</div>
         </div>
     </div>
 </div>
@@ -79,7 +71,7 @@
     <div class="container">
         <div class="logo-center">
             <h1>SINOTIMER<sup>®</sup></h1>
-            <p id="slogan">The Master of Time Controller</p>
+            <p>The Master of Time Controller</p>
         </div>
     </div>
 </header>
@@ -126,16 +118,11 @@
 </div>
 
 <script>
-    // 翻译字典（slogan 已统一更新为 The Master of Time Controller，亦可随语言翻译）
     const translations = {
-        'US': { 'slogan': 'The Master of Time Controller', 'home': 'Home', 'products': 'Products', 'company': 'Company profile', 'contacts': 'Contacts', 'promotion': 'Promotion', 'page1': 'Custom Page 1', 'page2': 'Custom Page 2', 'p0': 'See all categories', 'p1': 'WIFI Meters & Protectors', 'p2': 'Voltage and Current Protectors', 'p3': 'Energy Meters', 'p4': 'Measuring Meters', 'p5': 'Time Controllers', 'p6': 'Controling Instruments', 'p7': 'Modular Contactors', 'p8': 'PV Components', 'p9': 'Accessories and Auxiliaries', 'c1': 'Company Overview', 'c2': 'Ratings & Reviews' },
-        'DE': { 'slogan': 'Der Meister der Zeitsteuerung', 'home': 'Startseite', 'products': 'Produkte', 'company': 'Unternehmensprofil', 'contacts': 'Kontakt', 'promotion': 'Angebote', 'page1': 'Seite 1', 'page2': 'Seite 2', 'p0': 'Alle Kategorien', 'p1': 'WIFI Zähler', 'p2': 'Spannungsschutz', 'p3': 'Energiezähler', 'p4': 'Messgeräte', 'p5': 'Zeitschaltuhren', 'p6': 'Regelgeräte', 'p7': 'Schütze', 'p8': 'PV-Komponenten', 'p9': 'Zubehör', 'c1': 'Über uns', 'c2': 'Bewertungen' },
-        'ES': { 'slogan': 'El Maestro del Control de Tiempo', 'home': 'Inicio', 'products': 'Productos', 'company': 'Perfil', 'contacts': 'Contacto', 'promotion': 'Promoción', 'page1': 'Página 1', 'page2': 'Página 2', 'p0': 'Categorías', 'p1': 'Medidores WIFI', 'p2': 'Protectores de Voltaje', 'p3': 'Medidores Energía', 'p4': 'Medidores', 'p5': 'Temporizadores', 'p6': 'Instrumentos', 'p7': 'Contactores', 'p8': 'Componentes PV', 'p9': 'Accesorios', 'c1': 'Empresa', 'c2': 'Reseñas' },
-        'FR': { 'slogan': 'Le Maître du Contrôle du Temps', 'home': 'Accueil', 'products': 'Produits', 'company': 'Profil', 'contacts': 'Contacts', 'promotion': 'Promotion', 'page1': 'Page 1', 'page2': 'Page 2', 'p0': 'Catégories', 'p1': 'Compteurs WIFI', 'p2': 'Protecteurs Tension', 'p3': 'Compteurs Énergie', 'p4': 'Appareils Mesure', 'p5': 'Minuteurs', 'p6': 'Instruments', 'p7': 'Contacteurs', 'p8': 'Composants PV', 'p9': 'Accessoires', 'c1': 'A Propos', 'c2': 'Avis' },
-        'IT': { 'slogan': 'Il Maestro del Controllo del Tempo', 'home': 'Home', 'products': 'Prodotti', 'company': 'Profilo', 'contacts': 'Contatti', 'promotion': 'Promozioni', 'page1': 'Pagina 1', 'page2': 'Pagina 2', 'p0': 'Categorie', 'p1': 'Contatori WIFI', 'p2': 'Protettori Voltaggio', 'p3': 'Contatori Energia', 'p4': 'Strumenti Misura', 'p5': 'Timer', 'p6': 'Strumenti', 'p7': 'Contattori', 'p8': 'Componenti PV', 'p9': 'Accessori', 'c1': 'Azienda', 'c2': 'Recensioni' },
-        'RU': { 'slogan': 'Мастер контроля времени', 'home': 'Главная', 'products': 'Продукты', 'company': 'О компании', 'contacts': 'Контакты', 'promotion': 'Акции', 'page1': 'Стр. 1', 'page2': 'Стр. 2', 'p0': 'Все категории', 'p1': 'WIFI счетчики', 'p2': 'Защита напряжения', 'p3': 'Счетчики энергии', 'p4': 'Измерители', 'p5': 'Таймеры', 'p6': 'Приборы контроля', 'p7': 'Контакторы', 'p8': 'Фотовольтаика', 'p9': 'Аксессуары', 'c1': 'Обзор', 'c2': 'Отзывы' },
-        'JP': { 'slogan': 'タイムコントローラーのマスター', 'home': 'ホーム', 'products': '製品', 'company': '会社概要', 'contacts': '連絡先', 'promotion': 'プロモーション', 'page1': 'ページ1', 'page2': 'ページ2', 'p0': '全カテゴリー', 'p1': 'WIFIメーター', 'p2': '電圧保護器', 'p3': '電力量計', 'p4': '測定器', 'p5': 'タイマー', 'p6': '制御機器', 'p7': '接触器', 'p8': '太陽光部品', 'p9': 'アクセサリー', 'c1': '概要', 'c2': '評価' },
-        'UK': { 'slogan': 'The Master of Time Controller', 'home': 'Home', 'products': 'Products', 'company': 'About Us', 'contacts': 'Contact', 'promotion': 'Offers', 'page1': 'Page 1', 'page2': 'Page 2', 'p0': 'Categories', 'p1': 'WIFI Protectors', 'p2': 'Voltage Protectors', 'p3': 'Energy Meters', 'p4': 'Meters', 'p5': 'Time Switches', 'p6': 'Instruments', 'p7': 'Contactors', 'p8': 'PV Parts', 'p9': 'Extras', 'c1': 'Overview', 'c2': 'Reviews' }
+        'US': { 'home': 'Home', 'products': 'Products', 'company': 'Company profile', 'contacts': 'Contacts', 'promotion': 'Promotion', 'page1': 'Custom Page 1', 'page2': 'Custom Page 2', 'p0': 'See all categories', 'p1': 'WIFI Meters & Protectors', 'p2': 'Voltage and Current Protectors', 'p3': 'Energy Meters', 'p4': 'Measuring Meters', 'p5': 'Time Controllers', 'p6': 'Controling Instruments', 'p7': 'Modular Contactors', 'p8': 'PV Components', 'p9': 'Accessories and Auxiliaries', 'c1': 'Company Overview', 'c2': 'Ratings & Reviews' },
+        'EU': { 'home': 'Startseite', 'products': 'Produkte', 'company': 'Unternehmensprofil', 'contacts': 'Kontakt', 'promotion': 'Aktion', 'page1': 'Eigene Seite 1', 'page2': 'Eigene Seite 2', 'p0': 'Alle Kategorien', 'p1': 'WIFI Zähler', 'p2': 'Spannungsschutz', 'p3': 'Energiezähler', 'p4': 'Messgeräte', 'p5': 'Zeitschaltuhren', 'p6': 'Regelgeräte', 'p7': 'Schütze', 'p8': 'PV-Komponenten', 'p9': 'Zubehör', 'c1': 'Über uns', 'c2': 'Bewertungen' },
+        'UK': { 'home': 'Home', 'products': 'Products', 'company': 'About Us', 'contacts': 'Contact', 'promotion': 'Offers', 'page1': 'Page 1', 'page2': 'Page 2', 'p0': 'Categories', 'p1': 'WIFI Protectors', 'p2': 'Voltage Protectors', 'p3': 'Energy Meters', 'p4': 'Meters', 'p5': 'Time Switches', 'p6': 'Instruments', 'p7': 'Contactors', 'p8': 'PV Parts', 'p9': 'Extras', 'c1': 'Overview', 'c2': 'Reviews' },
+        'BR': { 'home': 'Início', 'products': 'Produtos', 'company': 'Perfil da Empresa', 'contacts': 'Contatos', 'promotion': 'Promoção', 'page1': 'Página 1', 'page2': 'Página 2', 'p0': 'Ver todas as categorias', 'p1': 'Medidores WIFI', 'p2': 'Protetores de Voltagem', 'p3': 'Medidores de Energia', 'p4': 'Medidores', 'p5': 'Temporizadores', 'p6': 'Instrumentos', 'p7': 'Contatores', 'p8': 'Componentes PV', 'p9': 'Acessórios', 'c1': 'Visão Geral', 'c2': 'Avaliações' }
     };
 
     function changeLang(lang) {
