@@ -2,199 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINOTIMER - Global Language Support</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SINOTIMER Official</title>
     <style>
-        :root {
-            --sinotimer-red: #E3120B;
-            --industrial-black: #1a1a1a;
-            --bg-gray: #f5f5f5;
+        /* 轮播图样式 */
+        .slider-box {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border: 3px solid #ce1212; /* 品牌红 */
         }
-
-        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; }
-
-        /* --- 顶部语言切换条 --- */
-        .language-top-bar {
-            background: var(--bg-gray);
-            border-bottom: 1px solid #ddd;
-            padding: 10px 5%;
-        }
-        .lang-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .lang-item {
-            display: flex;
-            flex-direction: column; /* 图标在文字上面 */
-            align-items: center;
-            text-decoration: none;
-            color: #666;
-            font-size: 11px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .lang-item:hover { color: var(--sinotimer-red); }
+        .mySlides { display: none; }
+        img { width: 100%; height: auto; vertical-align: middle; }
         
-        /* 国旗图标样式 */
-        .flag-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%; /* 圆形国旗 */
-            object-fit: cover;
-            margin-bottom: 4px;
-            border: 1px solid #ddd;
-        }
-
-        /* --- Logo 居中区域 --- */
-        header {
-            padding: 25px 5%;
-            text-align: center;
-            background: #fff;
-        }
-        .logo-center h1 {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--sinotimer-red);
-            margin: 0;
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
-        .logo-center p { margin: 5px 0 0; color: #333; font-weight: 600; font-size: 16px; }
-
-        /* --- 导航栏 (保持之前的黑色风格或选择白色) --- */
-        nav {
-            background: var(--industrial-black);
-            display: flex;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .main-menu { display: flex; list-style: none; margin: 0; padding: 0; }
-        .menu-item { position: relative; }
-        .menu-item > a {
-            display: block;
-            padding: 15px 18px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-        .menu-item:hover > a { background: var(--sinotimer-red); }
-
-        /* --- 下拉菜单 --- */
-        .dropdown {
+        /* 左右按钮 */
+        .prev, .next {
+            cursor: pointer;
             position: absolute;
-            top: 100%;
-            left: 0;
-            background: #fff;
-            min-width: 240px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: none;
-            list-style: none;
-            padding: 10px 0;
-            border-top: 3px solid var(--sinotimer-red);
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            transform: translateY(-50%);
         }
-        .menu-item:hover .dropdown { display: block; }
-        .dropdown li a {
-            padding: 10px 20px;
-            display: block;
-            color: #333;
-            text-decoration: none;
-            font-size: 13px;
-        }
-        .dropdown li a:hover { background: #f5f5f5; color: var(--sinotimer-red); }
-
+        .next { right: 0; }
+        .prev { left: 0; }
     </style>
 </head>
-<body>
+<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: Arial;">
 
-<div class="language-top-bar">
-    <div class="lang-list">
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/us.png" class="flag-icon" alt="English">
-            <span>English</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/de.png" class="flag-icon" alt="Deutsch">
-            <span>Deutsch</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/es.png" class="flag-icon" alt="Español">
-            <span>Español</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/fr.png" class="flag-icon" alt="Français">
-            <span>Français</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/it.png" class="flag-icon" alt="Italiano">
-            <span>Italiano</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/ru.png" class="flag-icon" alt="Русский">
-            <span>Русский</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/jp.png" class="flag-icon" alt="日本語">
-            <span>日本語</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/kr.png" class="flag-icon" alt="한국어">
-            <span>한국어</span>
-        </a>
-        <a href="#" class="lang-item">
-            <img src="https://flagcdn.com/w40/cn.png" class="flag-icon" alt="中文">
-            <span>中文</span>
-        </a>
+    <h1>Welcome to SINOTIMER</h1>
+    
+    <div class="slider-box">
+        <div class="mySlides">
+            <img src="p1.jpg">
+        </div>
+        <div class="mySlides">
+            <img src="p2.jpg">
+        </div>
+        
+        <button class="prev" onclick="plusSlides(-1)">❮</button>
+        <button class="next" onclick="plusSlides(1)">❯</button>
     </div>
-</div>
 
-<header>
-    <div class="logo-center">
-        <h1>SINOTIMER<sup>®</sup></h1>
-        <p>SinoTimer Technology Co., Ltd.</p>
-    </div>
-</header>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-<nav>
-    <ul class="main-menu">
-        <li class="menu-item"><a href="#">Home</a></li>
-        <li class="menu-item">
-            <a href="#">Products <i class="fas fa-caret-down"></i></a>
-            <ul class="dropdown">
-                <li><a href="#" style="color:var(--sinotimer-red); font-weight:bold;">See all categories</a></li>
-                <li><a href="#">WIFI Meters & Protectors</a></li>
-                <li><a href="#">Voltage and Current Protectors</a></li>
-                <li><a href="#">Energy Meters</a></li>
-                <li><a href="#">Measuring Meters</a></li>
-                <li><a href="#">Time Controllers</a></li>
-                <li><a href="#">Controling Instruments</a></li>
-                <li><a href="#">Modular Contactors</a></li>
-                <li><a href="#">PV Components</a></li>
-                <li><a href="#">Accessories and Auxiliaries</a></li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#">Company profile <i class="fas fa-caret-down"></i></a>
-            <ul class="dropdown">
-                <li><a href="#">Company Overview</a></li>
-                <li><a href="#">Ratings & Reviews</a></li>
-            </ul>
-        </li>
-        <li class="menu-item"><a href="#">Contacts</a></li>
-        <li class="menu-item"><a href="#">Promotion</a></li>
-        <li class="menu-item"><a href="#">Custom Page 1</a></li>
-        <li class="menu-item"><a href="#">Custom Page 2</a></li>
-    </ul>
-</nav>
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+        // 自动播放
+        setInterval(() => plusSlides(1), 3000);
+    </script>
 </body>
 </html>
