@@ -3,36 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINOTIMER - Official Website</title>
+    <title>SINOTIMER - Global Language Support</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --sinotimer-red: #E3120B;
             --industrial-black: #1a1a1a;
             --bg-gray: #f8f8f8;
-            --site-width: 1200px; /* 标准独立站核心宽度 */
+            --site-width: 1440px; /* 调整为更宽的标准，画面更饱满 */
         }
 
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; }
 
-        /* 通用容器：限制核心宽度并居中 */
+        /* 核心内容容器 */
         .container {
             max-width: var(--site-width);
             margin: 0 auto;
-            width: 95%; /* 手机端两边留点缝隙 */
+            width: 95%;
         }
 
-        /* --- 1. 顶部语言栏 (背景铺满，内容居中) --- */
+        /* --- 1. 顶部语言栏 --- */
         .language-top-bar {
             background: var(--bg-gray);
             border-bottom: 1px solid #eee;
-            padding: 8px 0;
+            padding: 10px 0;
         }
         .lang-list {
             display: flex;
-            justify-content: flex-end; /* 国旗靠右对齐，符合标准习惯 */
-            gap: 15px;
+            justify-content: flex-end;
+            gap: 20px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -40,77 +40,87 @@
         .lang-item {
             text-decoration: none;
             color: #666;
-            font-size: 12px;
+            font-size: 13px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
         }
-        .flag-icon { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
+        .lang-item:hover { color: var(--sinotimer-red); }
+        .flag-icon { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
 
-        /* --- 2. Logo 区域 (居中) --- */
-        header { padding: 30px 0; text-align: center; }
-        .logo-center h1 { font-size: 45px; color: var(--sinotimer-red); margin: 0; font-weight: 800; }
-        .logo-center p { color: #333; margin: 5px 0 0; font-size: 16px; letter-spacing: 1px; }
+        /* --- 2. Logo 区域 --- */
+        header { padding: 40px 0; text-align: center; }
+        .logo-center h1 { font-size: 52px; color: var(--sinotimer-red); margin: 0; font-weight: 800; letter-spacing: -1px; }
+        .logo-center p { color: #333; margin: 8px 0 0; font-size: 18px; font-weight: 600; }
 
-        /* --- 3. 导航栏 (背景黑，菜单限制宽度) --- */
+        /* --- 3. 导航栏 (精准菜单版) --- */
         nav {
             background: var(--industrial-black);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .main-menu {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
+            justify-content: center;
         }
         .menu-item { position: relative; }
         .menu-item > a {
             display: block;
-            padding: 18px 20px;
+            padding: 20px 22px; /* 增加间距 */
             color: #fff;
             text-decoration: none;
             font-size: 14px;
             text-transform: uppercase;
+            font-weight: 600;
             transition: 0.3s;
         }
         .menu-item:hover > a { background: var(--sinotimer-red); }
         
-        /* 下拉菜单优化 */
+        /* 下拉菜单 */
         .dropdown {
             position: absolute; top: 100%; left: 0;
-            background: #fff; min-width: 250px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: none; list-style: none; padding: 10px 0;
-            border-top: 3px solid var(--sinotimer-red);
+            background: #fff; min-width: 280px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: none; list-style: none; padding: 12px 0;
+            border-top: 4px solid var(--sinotimer-red);
         }
         .menu-item:hover .dropdown { display: block; }
-        .dropdown li a { padding: 10px 20px; display: block; color: #333; text-decoration: none; font-size: 13px; border-bottom: 1px solid #f9f9f9; }
-        .dropdown li a:hover { background: #fdfdfd; color: var(--sinotimer-red); padding-left: 25px; transition: 0.2s; }
-
-        /* --- 4. 轮播图区域 (标准规格) --- */
-        .slider-section {
-            background: #fff;
-            padding: 20px 0; /* 图片上下留一点空白，更有高级感 */
+        .dropdown li a { 
+            padding: 12px 25px; 
+            display: block; 
+            color: #333; 
+            text-decoration: none; 
+            font-size: 14px; 
+            border-bottom: 1px solid #f2f2f2; 
         }
+        .dropdown li:last-child a { border-bottom: none; }
+        .dropdown li a:hover { background: #f9f9f9; color: var(--sinotimer-red); padding-left: 30px; transition: 0.2s; }
+
+        /* --- 4. 轮播图区域 (大气版) --- */
+        .slider-section { padding: 0; margin-top: 0; }
         .slider-container {
             max-width: var(--site-width);
-            margin: 0 auto;
+            margin: 25px auto;
             position: relative;
             overflow: hidden;
-            border-radius: 4px; /* 四角微圆，符合现代审美 */
+            border-radius: 8px; /* 现代圆角 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .mySlides { display: none; }
         .mySlides img { width: 100%; height: auto; display: block; }
         
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
-            padding: 15px; color: white; background: rgba(0,0,0,0.2); border: none;
-            font-size: 24px; transition: 0.3s;
+            padding: 20px; color: white; background: rgba(0,0,0,0.2); border: none;
+            font-size: 30px; transition: 0.3s;
         }
-        .next { right: 0; border-radius: 4px 0 0 4px; }
-        .prev { left: 0; border-radius: 0 4px 4px 0; }
+        .next { right: 0; border-radius: 8px 0 0 8px; }
+        .prev { left: 0; border-radius: 0 8px 8px 0; }
         .prev:hover, .next:hover { background: var(--sinotimer-red); }
 
     </style>
@@ -120,18 +130,24 @@
 <div class="language-top-bar">
     <div class="container">
         <div class="lang-list">
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">EN</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon">ES</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon">RU</a>
-            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon">CN</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/us.png" class="flag-icon">English</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/de.png" class="flag-icon">Deutsch</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/es.png" class="flag-icon">Español</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/fr.png" class="flag-icon">Français</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/it.png" class="flag-icon">Italiano</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/ru.png" class="flag-icon">Русский</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/jp.png" class="flag-icon">日本語</a>
+            <a href="#" class="lang-item"><img src="https://flagcdn.com/w40/cn.png" class="flag-icon">中文</a>
         </div>
     </div>
 </div>
 
 <header>
-    <div class="logo-center">
-        <h1>SINOTIMER<sup>®</sup></h1>
-        <p>Expert in Time and Energy Control</p>
+    <div class="container">
+        <div class="logo-center">
+            <h1>SINOTIMER<sup>®</sup></h1>
+            <p>SinoTimer Technology Co., Ltd.</p>
+        </div>
     </div>
 </header>
 
@@ -139,10 +155,11 @@
     <div class="container">
         <ul class="main-menu">
             <li class="menu-item"><a href="#">Home</a></li>
+            
             <li class="menu-item">
                 <a href="#">Products <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown">
-                    <li><a href="#" style="font-weight:bold; color:var(--sinotimer-red);">See All Categories</a></li>
+                    <li><a href="#" style="font-weight:bold; color:var(--sinotimer-red);">See all categories</a></li>
                     <li><a href="#">WIFI Meters & Protectors</a></li>
                     <li><a href="#">Voltage and Current Protectors</a></li>
                     <li><a href="#">Energy Meters</a></li>
@@ -154,6 +171,7 @@
                     <li><a href="#">Accessories and Auxiliaries</a></li>
                 </ul>
             </li>
+
             <li class="menu-item">
                 <a href="#">Company profile <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown">
@@ -161,6 +179,7 @@
                     <li><a href="#">Ratings & Reviews</a></li>
                 </ul>
             </li>
+
             <li class="menu-item"><a href="#">Contacts</a></li>
             <li class="menu-item"><a href="#">Promotion</a></li>
             <li class="menu-item"><a href="#">Custom Page 1</a></li>
@@ -195,3 +214,4 @@
 
 </body>
 </html>
+
